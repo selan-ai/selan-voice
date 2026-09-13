@@ -1,0 +1,15 @@
+{
+  "name": "selan-voice",
+  "description": "Hear Claude's answers. Speaks the last reply aloud through your company's Selan voice gateway.",
+  "version": "0.1.0",
+  "owner": {
+    "name": "Selan",
+    "url": "https://selan.ai"
+  },
+  "plugins": [
+    {
+      "name": "selan-voice",
+      "source": "./"
+    }
+  ]
+}

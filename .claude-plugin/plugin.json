@@ -1,0 +1,13 @@
+{
+  "name": "selan-voice",
+  "description": "Hear Claude's answers. Speaks the last reply aloud through your company's Selan voice gateway.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Selan",
+    "url": "https://selan.ai"
+  },
+  "homepage": "https://selan.ai",
+  "repository": "https://github.com/selan-ai/selan-voice",
+  "license": "MIT",
+  "keywords": ["voice", "text-to-speech", "audio", "selan", "accessibility"]
+}
