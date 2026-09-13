@@ -1,7 +1,7 @@
 {
   "name": "selan-voice",
   "description": "Hear Claude's answers. Speaks the last reply aloud through your company's Selan voice gateway.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "Selan",
     "url": "https://selan.ai"
