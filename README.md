@@ -49,11 +49,15 @@ company is entitled to voice, records what the request cost, and returns audio.
 An owner switches voice on for the company in Selan; until then every request
 answers `403`, which is the correct answer rather than an error to retry.
 
-For the short `speak` command, link it once:
+For the short `speak` command, link it:
 
 ```bash
 ln -sf ~/.claude/plugins/cache/*/selan-voice/*/skills/voice/scripts/speak.sh ~/.local/bin/speak
 ```
+
+The cache path carries the version, so re-run that after a plugin update. Asking
+Claude to read something out needs no link — the skill calls the script by its
+own path.
 
 ## Requirements
 

@@ -44,11 +44,15 @@ characters came back as 63 seconds.
 company must have voice switched on. `SELAN_VOICE_URL` overrides the gateway,
 which defaults to `https://cxgw.selan.ai`.
 
-For a shorter command, link it onto PATH once:
+For a shorter command, link it onto PATH:
 
 ```bash
 ln -sf "${CLAUDE_PLUGIN_ROOT}/skills/voice/scripts/speak.sh" ~/.local/bin/speak
 ```
+
+That path carries the plugin version, so the link needs remaking after an
+update. Nothing here depends on it — the commands above call the script
+directly.
 
 Only `curl` and `awk` are needed — deliberately no node, python or jq.
 
