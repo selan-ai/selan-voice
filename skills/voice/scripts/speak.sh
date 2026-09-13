@@ -88,7 +88,7 @@ if [ -z "${text//[[:space:]]/}" ]; then
   exit 64
 fi
 
-url=${SELAN_VOICE_URL:-https://cxgw.selan.ai}
+url=${SELAN_VOICE_URL:-https://gw.selan.ai}
 token=${SELAN_API_KEY:-${ANTHROPIC_AUTH_TOKEN:-}}
 if [ -z "$token" ]; then
   echo "speak: set SELAN_API_KEY (or ANTHROPIC_AUTH_TOKEN) to a Selan token" >&2

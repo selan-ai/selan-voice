@@ -44,7 +44,7 @@ company is entitled to voice, records what the request cost, and returns audio.
 | Variable | Meaning |
 | --- | --- |
 | `SELAN_API_KEY` | Your Selan token. Falls back to `ANTHROPIC_AUTH_TOKEN`. |
-| `SELAN_VOICE_URL` | The gateway. Defaults to `https://cxgw.selan.ai`. |
+| `SELAN_VOICE_URL` | The gateway. Defaults to `https://gw.selan.ai`. |
 
 An owner switches voice on for the company in Selan; until then every request
 answers `403`, which is the correct answer rather than an error to retry.

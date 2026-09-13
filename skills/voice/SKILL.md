@@ -42,7 +42,7 @@ characters came back as 63 seconds.
 
 `SELAN_API_KEY` (or `ANTHROPIC_AUTH_TOKEN`) must hold a Selan token, and the
 company must have voice switched on. `SELAN_VOICE_URL` overrides the gateway,
-which defaults to `https://cxgw.selan.ai`.
+which defaults to `https://gw.selan.ai`.
 
 For a shorter command, link it onto PATH:
 
