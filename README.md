@@ -9,7 +9,8 @@ voice gateway.
 /plugin install selan-voice@selan-voice
 ```
 
-Then ask Claude to read something out, or run it yourself:
+Then ask Claude to read something out. For a `speak` command of your own, link it
+first — see [Setup](#setup); until you do, `speak` is not a command yet.
 
 ```bash
 speak            # speak the last reply
@@ -52,12 +53,18 @@ answers `403`, which is the correct answer rather than an error to retry.
 For the short `speak` command, link it:
 
 ```bash
-ln -sf ~/.claude/plugins/cache/*/selan-voice/*/skills/voice/scripts/speak.sh ~/.local/bin/speak
+mkdir -p ~/.local/bin
+ln -sfn "$(ls -d ~/.claude/plugins/cache/*/selan-voice/*/skills/voice/scripts/speak.sh | sort -V | tail -1)" ~/.local/bin/speak
+speak --print   # prove the link resolves
 ```
 
-The cache path carries the version, so re-run that after a plugin update. Asking
-Claude to read something out needs no link — the skill calls the script by its
-own path.
+The `sort -V | tail -1` is load-bearing: the glob matches every version you have
+ever installed, and `ln` given three paths reads the last as a directory. It also
+picks the newest, which is what you want after an update — the cache path carries
+the version, so a link made once goes stale.
+
+Asking Claude to read something out needs no link at all. The skill calls the
+script by its own path.
 
 ## Requirements
 

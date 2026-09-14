@@ -44,15 +44,22 @@ characters came back as 63 seconds.
 company must have voice switched on. `SELAN_VOICE_URL` overrides the gateway,
 which defaults to `https://gw.selan.ai`.
 
-For a shorter command, link it onto PATH:
+For a shorter command, link it onto PATH. Run this **from a Claude Code session**,
+where `CLAUDE_PLUGIN_ROOT` is set:
 
 ```bash
-ln -sf "${CLAUDE_PLUGIN_ROOT}/skills/voice/scripts/speak.sh" ~/.local/bin/speak
+mkdir -p ~/.local/bin
+ln -sfn "${CLAUDE_PLUGIN_ROOT:?run this from Claude Code}/skills/voice/scripts/speak.sh" ~/.local/bin/speak
 ```
 
-That path carries the plugin version, so the link needs remaking after an
-update. Nothing here depends on it — the commands above call the script
-directly.
+The `:?` matters. In a plain terminal that variable is empty, and without the
+guard the command happily links `speak` to `/skills/voice/scripts/speak.sh` — a
+path that does not exist, so `speak` then answers "No such file or directory"
+rather than saying it was never linked. From your own terminal, use the resolving
+one-liner in the README instead.
+
+That path carries the plugin version, so the link needs remaking after an update.
+Nothing here depends on it — the commands above call the script directly.
 
 Only `curl` and `awk` are needed — deliberately no node, python or jq.
 
