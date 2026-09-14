@@ -50,21 +50,20 @@ company is entitled to voice, records what the request cost, and returns audio.
 An owner switches voice on for the company in Selan; until then every request
 answers `403`, which is the correct answer rather than an error to retry.
 
-For the short `speak` command, link it:
+`speak` lands on PATH by itself. A `SessionStart` hook relinks
+`~/.local/bin/speak` at each launch, so an update never leaves a stale link —
+the cache path carries the plugin's version.
 
 ```bash
-mkdir -p ~/.local/bin
-ln -sfn "$(ls -d ~/.claude/plugins/cache/*/selan-voice/*/skills/voice/scripts/speak.sh | sort -V | tail -1)" ~/.local/bin/speak
-speak --print   # prove the link resolves
+speak --print   # prove it resolves; spends nothing
 ```
 
-The `sort -V | tail -1` is load-bearing: the glob matches every version you have
-ever installed, and `ln` given three paths reads the last as a directory. It also
-picks the newest, which is what you want after an update — the cache path carries
-the version, so a link made once goes stale.
+If that says "command not found", `~/.local/bin` is not on your PATH — the hook
+says so too. The link is only a convenience: asking Claude to read something out
+needs none of it, because the skill calls the script by its own path.
 
-Asking Claude to read something out needs no link at all. The skill calls the
-script by its own path.
+The hook will not take a `speak` that is not its own. A real file there, or a
+link pointing elsewhere, is left where it is.
 
 ## Requirements
 
