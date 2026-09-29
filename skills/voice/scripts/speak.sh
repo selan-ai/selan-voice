@@ -95,6 +95,9 @@ if [ -z "$token" ]; then
   exit 78
 fi
 
+anthropic_sdk_version=${ANTHROPIC_SDK_VERSION:-0.129.0}
+user_agent="Anthropic SDK $anthropic_sdk_version"
+
 audio=$(mktemp -t selan-voice)
 headers=$(mktemp -t selan-voice-headers)
 # The audio carries no credential, but it is a company's paid output.
@@ -111,6 +114,7 @@ status=$(
         --request POST "$url/openai/v1/audio/speech" \
         --header "authorization: Bearer $token" \
         --header 'content-type: application/json' \
+        --user-agent "$user_agent" \
         --data-binary @-
 )
 
